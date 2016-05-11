@@ -1,0 +1,82 @@
+html, body
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: url("/images/web-backround.jpeg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container
+{
+    max-width: 940px;
+}
+
+.main
+{
+    margin-top: 150px;
+    margin-left: 380px;
+}
+
+.main h1
+{
+    font-size: 30px;
+    margin: 0 0 20px 0;
+}
+
+#logo
+{
+    margin-top: -150px;
+    display: center;
+    height: 200px;
+}
+
+p
+{
+    text-align: center;
+    width: 500px;
+    background-color: orangered;
+    color: yellow;
+    font-size: 75px;
+}
+
+form input.form-control
+{
+    width: 400px;
+    margin-left: 50px;
+    font-size: 20px;
+    border: 0px;
+    border: 2px solid darkgray;
+    border-radius: 0px;
+} 
+
+#back
+{
+    margin-top: 10px;
+    margin: 0 auto;
+    width: 500px;
+    height: 650px;
+    background-color: white;
+}
+
+button
+{
+    text-decoration: none;
+    margin-left: 180px;
+    margin-bottom: 5px;
+}
+
+a:hover
+{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.attributes
+{
+    margin-left: 50px;
+}
