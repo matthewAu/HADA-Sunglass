@@ -26,15 +26,36 @@ namespace Sunglasses_website
                 DataTable dt = new DataTable();
                 dt = virtdb.Tables["product"];
                 DataRow newRow = dt.NewRow();
-                newRow[0] = producto_nuevo.Id;
-                newRow[1] = producto_nuevo.Price;
-                newRow[2] = producto_nuevo.Color;
-                newRow[3] = producto_nuevo.FilepathPicture;
-                newRow[4] = producto_nuevo.Name;
-                newRow[5] = producto_nuevo.Brand;
+                
+                newRow[0] = producto_nuevo.ProductId;
+                newRow[1] = producto_nuevo.ProductRef;
+                newRow[2] = producto_nuevo.ProductName;
+                newRow[3] = producto_nuevo.ProductPrice;
+                newRow[4] = producto_nuevo.ProductBrand;
+                newRow[5] = producto_nuevo.Color;
+                newRow[6] = producto_nuevo.Description;
+                newRow[7] = producto_nuevo.FilepathPicture1;
+                newRow[8] = producto_nuevo.FilepathPicture2;
+                newRow[9] = producto_nuevo.FilepathPicture3;
+                newRow[10] = producto_nuevo.FilepathPicture4;
+                newRow[11] = producto_nuevo.FilepathPicture5;
+
                 dt.Rows.Add(newRow);
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
                 da.Update(virtdb, "product");
+
+                //this.productId = productId;
+                //this.productRef = productRef;
+                //this.productName = productName;
+                //this.productPrice = productPrice;
+                //this.productBrand = productBrand;
+                //this.color = color;
+                //this.description = description;
+                //this.filePathPicture1 = filePathPicture1;
+                //this.filePathPicture2 = filePathPicture2;
+                //this.filePathPicture3 = filePathPicture3;
+                //this.filePathPicture4 = filePathPicture4;
+                //this.filePathPicture5 = filePathPicture5;
             }
             catch (Exception ex)
             {
@@ -62,12 +83,17 @@ namespace Sunglasses_website
                 DataTable t = new DataTable();
                 t = virtdb.Tables["product"];
 
-                t.Rows[i]["Id"] = producto_actualizado.Id;
-                t.Rows[i]["Price"] = producto_actualizado.Price;
+                t.Rows[i]["productId"] = producto_actualizado.ProductId;
+                t.Rows[i]["productPrice"] = producto_actualizado.ProductPrice;
+                t.Rows[i]["descriptio"] = producto_actualizado.Description;
                 t.Rows[i]["Color"] = producto_actualizado.Color;
-                t.Rows[i]["FilepathPicture"] = producto_actualizado.FilepathPicture;
-                t.Rows[i]["Name"] = producto_actualizado.Name;
-                t.Rows[i]["Brand"] = producto_actualizado.Brand;
+                t.Rows[i]["FilepathPicture1"] = producto_actualizado.FilepathPicture1;
+                t.Rows[i]["FilepathPicture2"] = producto_actualizado.FilepathPicture2;
+                t.Rows[i]["FilepathPicture3"] = producto_actualizado.FilepathPicture3;
+                t.Rows[i]["FilepathPicture4"] = producto_actualizado.FilepathPicture4;
+                t.Rows[i]["FilepathPicture5"] = producto_actualizado.FilepathPicture5;
+                t.Rows[i]["productName"] = producto_actualizado.ProductName;
+                t.Rows[i]["productBrand"] = producto_actualizado.ProductBrand;
 
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
                 da.Update(virtdb, "product");
@@ -163,7 +189,6 @@ namespace Sunglasses_website
             }
             return virtdb;
         }
-
 
         public DataSet searchProductByName(string name)
         {

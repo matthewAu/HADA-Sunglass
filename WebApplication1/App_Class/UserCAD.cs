@@ -17,7 +17,7 @@ namespace Sunglasses_website
     {
         public void register_user(UserEN u)
         {
-            string s = ConfigurationManager.ConnectionStrings["DatabaseConnection"].ToString();
+            string s = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             SqlConnection c = new SqlConnection(s);
             try
             {
@@ -39,7 +39,7 @@ namespace Sunglasses_website
 
         public void delete_user(UserEN u)
         {
-            string s = ConfigurationManager.ConnectionStrings["DatabaseConnection"].ToString();
+            string s = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             SqlConnection c = new SqlConnection(s);
             try
             {
@@ -60,7 +60,7 @@ namespace Sunglasses_website
 
         public void update_user(UserEN u)
         {
-            string s = ConfigurationManager.ConnectionStrings["DatabaseConnection"].ToString();
+            string s = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             SqlConnection c = new SqlConnection(s);
             try
             {
@@ -83,7 +83,7 @@ namespace Sunglasses_website
 
         public ArrayList login_user(UserEN u)
         {
-            string s = ConfigurationManager.ConnectionStrings["DatabaseConnection"].ToString();
+            string s = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             ArrayList al = new ArrayList();
             SqlConnection c = new SqlConnection(s);
             try

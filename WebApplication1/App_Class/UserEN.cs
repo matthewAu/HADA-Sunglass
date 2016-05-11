@@ -15,27 +15,35 @@ namespace Sunglasses_website
 {
     public class UserEN
     {
-
         //Class constructor
-        public UserEN()
+        public UserEN(int productId, string password, string username, string name, string email, string phone, string dni)
         {
-            password = "";
-            username = "";
-            name = "";
-            email = "";
-            phoneNumber = "";
-            dni = "";
+            this.productId = productId;
+            this.password = password;
+            this.username = username;
+            this.name = name;
+            this.email = email;
+            this.phoneNumber = phone;
+            this.dni = dni;
         }
 
         //Variables declaration
+        private int productId;
         private String password;
         private String username;
         private String name;
         private String email;
+        //New Add
         private String phoneNumber;
         private String dni;
 
         //Getters and setters methods
+        public int ProductId
+        {
+            get { return productId ; }
+            set { productId = value; }
+        }
+
         public String Password
         {
             get { return password; }

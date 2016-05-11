@@ -16,14 +16,15 @@ namespace Sunglasses_website
         }
 
         //Copy constructor
-        public OrderEN(int orderId, ClientEN client, ProductEN product, DateTime date, String address, int postalCode)
+        public OrderEN(int orderId, ClientEN client, ProductEN product, DateTime transactionDate, String address, int postalCode,int quality )
         {
             this.orderId = orderId;
             this.client = client;
             this.product =  product ;
-            this.date = date ;
+            this.transactionDate = transactionDate;
             this.address = address;
             this.postalCode = postalCode;
+            this.quantity = quality; 
         }
 
         //Method used in order to search an order in the DB
@@ -39,7 +40,7 @@ namespace Sunglasses_website
         private int orderId;
         private ProductEN product;
         private ClientEN client;
-        private DateTime date;
+        private DateTime transactionDate;
         private String address;
         private int postalCode;
         private int quantity;
@@ -64,10 +65,10 @@ namespace Sunglasses_website
             set { client = value; }
         }
 
-        public DateTime Date
+        public DateTime TransactionDate
         {
-            get { return date; }
-            set { date = value; }
+            get { return transactionDate; }
+            set { transactionDate = value; }
         }
 
         public String Address
