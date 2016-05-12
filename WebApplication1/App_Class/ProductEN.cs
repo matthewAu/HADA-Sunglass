@@ -32,15 +32,6 @@ namespace Sunglasses_website
             this.filePathPicture5 = filePathPicture5;
         }
 
-        //Method used in order to search products in the DB
-        public DataSet searchProduct(int productId)
-        {
-            ProductCAD c = new ProductCAD();
-            DataSet datSet = c.searchProduct(productId);
-
-            return datSet;
-        }
-
         //Variables declaration
         private int productId;
         private string productRef;
@@ -85,31 +76,31 @@ namespace Sunglasses_website
             set { color = value; }
         }
 
-        public string FilepathPicture1
+        public string FilePathPicture1
         {
             get { return filePathPicture1; }
             set { filePathPicture1 = value; }
         }
 
-        public string FilepathPicture2
+        public string FilePathPicture2
         {
             get { return filePathPicture2; }
             set { filePathPicture2 = value; }
         }
 
-        public string FilepathPicture3
+        public string FilePathPicture3
         {
             get { return filePathPicture3; }
             set { filePathPicture3 = value; }
         }
 
-        public string FilepathPicture4
+        public string FilePathPicture4
         {
             get { return filePathPicture4; }
             set { filePathPicture4 = value; }
         }
 
-        public string FilepathPicture5
+        public string FilePathPicture5
         {
             get { return filePathPicture5; }
             set { filePathPicture5 = value; }

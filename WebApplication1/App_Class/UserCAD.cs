@@ -19,12 +19,22 @@ namespace Sunglasses_website
         {
             string s = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             SqlConnection c = new SqlConnection(s);
+
             try
             {
-                c.Open();
-                SqlCommand com = new SqlCommand("Insert Into User (password, username, name, email, phoneNumber, dni) VALUES ('" + u.Password + "','" + u.Username + "','" + u.Name + "','" + u.Email + "'," + u.PhoneNumber + "'," + u.Dni + "')", c);
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [dbo].[User] (password, username, name, email) output INSERTED.USERID VALUES(@password,@username,@name,@email)", c))
+                {
+                    cmd.Parameters.AddWithValue("@password", u.Password);
+                    cmd.Parameters.AddWithValue("@username", u.Username);
+                    cmd.Parameters.AddWithValue("@name", u.Name);
+                    cmd.Parameters.AddWithValue("@email", u.Email);
+                    c.Open();
 
-                com.ExecuteNonQuery();
+                    int modified = (int)cmd.ExecuteScalar();
+
+                    if (c.State == System.Data.ConnectionState.Open)
+                        c.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -44,7 +54,7 @@ namespace Sunglasses_website
             try
             {
                 c.Open();
-                SqlCommand com = new SqlCommand("Delete From User Where Email = " + u.Email, c);
+                SqlCommand com = new SqlCommand("Delete From User Where Email = " + u.Username, c);
                 com.ExecuteNonQuery();
             }
             catch (Exception ex)

@@ -14,7 +14,7 @@ namespace Sunglasses_website
     class OrderCAD
     {
 
-        public DataSet addOrder(OrderEN nuevo_pedido)
+        public void addOrder(OrderEN nuevo_pedido)
         {
             string str = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             DataSet virtdb = new DataSet();
@@ -22,21 +22,23 @@ namespace Sunglasses_website
 
             try
             {
-                SqlDataAdapter da = new SqlDataAdapter("select * from Order", c);
-                da.Fill(virtdb, "order");
-                DataTable dt = new DataTable();
-                dt = virtdb.Tables["order"];
-                DataRow newRow = dt.NewRow();
-                newRow[0] = nuevo_pedido.OrderId;
-                newRow[1] = nuevo_pedido.Product;
-                newRow[2] = nuevo_pedido.Client;
-                newRow[3] = nuevo_pedido.Date;
-                newRow[4] = nuevo_pedido.Address;
-                newRow[5] = nuevo_pedido.PostalCode;
-                newRow[6] = nuevo_pedido.Quantity;
-                dt.Rows.Add(newRow);
-                SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
-                da.Update(virtdb, "order");
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [dbo].[User] (productId, userId, address, postalCode,transactionDate,quatity) output INSERTED.ORDERID VALUES(@productId,@orderId, @address, @postalCode,@transactionDate,@quatity)", c))
+                {
+
+                    cmd.Parameters.AddWithValue("@productId", nuevo_pedido.Product.ProductId);
+                    cmd.Parameters.AddWithValue("@userId", nuevo_pedido.User.UserId);
+                    cmd.Parameters.AddWithValue("@address", nuevo_pedido.Address);
+                    cmd.Parameters.AddWithValue("@postalCode", nuevo_pedido.PostalCode);
+                    cmd.Parameters.AddWithValue("@transactionDate", nuevo_pedido.TransactionDate);
+                    cmd.Parameters.AddWithValue("@quatity", nuevo_pedido.Quantity);
+
+                    c.Open();
+             
+                    int modified = (int)cmd.ExecuteScalar();
+
+                    if (c.State == System.Data.ConnectionState.Open)
+                        c.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -47,8 +49,6 @@ namespace Sunglasses_website
             {
                 c.Close();
             }
-
-            return virtdb;
         }
 
         public DataSet update(OrderEN pedido_nuevo, int i)
@@ -66,8 +66,8 @@ namespace Sunglasses_website
 
                 t.Rows[i]["orderId"] = pedido_nuevo.OrderId;
                 t.Rows[i]["product"] = pedido_nuevo.Product;
-                t.Rows[i]["client"] = pedido_nuevo.Client;
-                t.Rows[i]["date"] = pedido_nuevo.Date;
+                t.Rows[i]["client"] = pedido_nuevo.User;
+                t.Rows[i]["date"] = pedido_nuevo.TransactionDate;
                 t.Rows[i]["address"] = pedido_nuevo.Address;
                 t.Rows[i]["postalCode"] = pedido_nuevo.PostalCode;
                 t.Rows[i]["quantity"] = pedido_nuevo.Quantity;

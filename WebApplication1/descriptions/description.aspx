@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="description.aspx.cs" Inherits="WebApplication1.descriptions.description" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="description.aspx.cs" Inherits="WebApplication1.descriptions.description"%>
 
 <!DOCTYPE html>
 
@@ -104,8 +104,7 @@ $('.alert-close1').on('click', function(c){
 					</div>	
 			</div>
 			<div class="grid images_3_1">
-                
-				<asp:Label runat="server" ID="lable_ProductName" ></asp:Label>
+                <asp:Label ID="lbl_ProductName" runat="server"></asp:Label>
 				<h5>REF. CB/001</h5>
 					<div class="doll-gd simpleCart_shelfItem">
 						

@@ -16,7 +16,7 @@ namespace Sunglasses_website
         }
 
         //Copy constructor
-        public OrderEN(int orderId, ClientEN client, ProductEN product, DateTime transactionDate, String address, int postalCode,int quality )
+        public OrderEN(int orderId, UserEN client, ProductEN product, DateTime transactionDate, String address, int postalCode,int quality )
         {
             this.orderId = orderId;
             this.client = client;
@@ -39,7 +39,7 @@ namespace Sunglasses_website
         //Variables declaration
         private int orderId;
         private ProductEN product;
-        private ClientEN client;
+        private UserEN client;
         private DateTime transactionDate;
         private String address;
         private int postalCode;
@@ -59,7 +59,7 @@ namespace Sunglasses_website
         }
 
 
-        public ClientEN Client
+        public UserEN User
         {
             get { return client; }
             set { client = value; }
