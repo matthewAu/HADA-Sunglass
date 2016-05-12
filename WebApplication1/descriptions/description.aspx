@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>SunBest sunglasses | Carbon Black · Emerald One</title>
+<head runat="server">
+<title></title>
 <link href="../css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />

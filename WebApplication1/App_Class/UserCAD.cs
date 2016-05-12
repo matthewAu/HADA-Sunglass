@@ -91,57 +91,123 @@ namespace Sunglasses_website
             }
         }
 
-        public ArrayList login_user(UserEN u)
+        //public ArrayList login_user(UserEN u)
+        //{
+        //    string s = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+        //    ArrayList al = new ArrayList();
+        //    SqlConnection c = new SqlConnection(s);
+        //    try
+        //    {
+        //        c.Open();
+        //        SqlCommand com = new SqlCommand("Select * from User where email = " + u.Email, c);
+        //        SqlDataReader dr = com.ExecuteReader();
+        //        while (dr.Read())
+        //        {
+        //            al.Add(dr["Email"].ToString());
+        //        }
+        //        dr.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ex.ToString();
+        //        Console.WriteLine("ERROR: Login User");
+        //    }
+        //    finally
+        //    {
+        //        c.Close();
+        //    }
+        //    return al;
+        //}
+
+        public UserEN searchUserById(int id)
         {
-            string s = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
-            ArrayList al = new ArrayList();
-            SqlConnection c = new SqlConnection(s);
+            UserEN res = new UserEN();
+            //String where it's stored the instructions for the connecton for the DB
+            string str = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            DataSet virtdb = new DataSet(); // Created the DataSet that is going to be returned with the information asked
+            SqlConnection c = new SqlConnection(str);
+
             try
-            {
-                c.Open();
-                SqlCommand com = new SqlCommand("Select * from User where email = " + u.Email, c);
-                SqlDataReader dr = com.ExecuteReader();
-                while (dr.Read())
-                {
-                    al.Add(dr["Email"].ToString());
-                }
-                dr.Close();
+            {    //The select in SQL language that is processed in the DB which will return all the rows from the table "Admin"
+                //SqlDataAdapter da = new SqlDataAdapter("select * from Product where productName = '" + name + "'", c);
+                SqlDataAdapter da = new SqlDataAdapter("select * from [dbo].[User] where UserId = '" + id + "'", c);
+                da.Fill(virtdb, "searchProductById"); //It introduces the information returned from the select into this virtual DB
+
+                res.UserId = (int)virtdb.Tables[0].Rows[0]["productId"];
+                res.Username = (string)virtdb.Tables[0].Rows[0]["usrename"];
+                res.Password = (string)virtdb.Tables[0].Rows[0]["password"];
+                res.Name = (string)virtdb.Tables[0].Rows[0]["name"];
+                res.Email = (string)virtdb.Tables[0].Rows[0]["email"];
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                ex.ToString();
-                Console.WriteLine("ERROR: Login User");
+                e.ToString();
+                Console.WriteLine("ERROR showing the product");
             }
             finally
             {
                 c.Close();
             }
-            return al;
+
+            return res;
         }
 
-        public DataSet searchUsers(String email, String password)
+        public UserEN loginByUserNameAndPassword(string name, string password)
         {
-            string s;
-            s = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
-            SqlConnection c = new SqlConnection(s);
-            DataSet virtdb = new DataSet();
+            UserEN res = new UserEN();
+            //String where it's stored the instructions for the connecton for the DB
+            string str = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            DataSet virtdb = new DataSet(); // Created the DataSet that is going to be returned with the information asked
+            SqlConnection c = new SqlConnection(str);
 
             try
-            {
-                SqlDataAdapter da = new SqlDataAdapter("Select count(*) from User where email = '" + email + "' and password = '" + password + "'", c);
-                da.Fill(virtdb, "user");
+            {    //The select in SQL language that is processed in the DB which will return all the rows from the table "Admin"
+                //SqlDataAdapter da = new SqlDataAdapter("select * from Product where productName = '" + name + "'", c);
+                SqlDataAdapter da = new SqlDataAdapter("select * from [dbo].[User] where Username = '" + name + "' and password = '"+ password +"'", c);
+                da.Fill(virtdb, "searchProductById"); //It introduces the information returned from the select into this virtual DB
 
+                res.UserId = (int)virtdb.Tables[0].Rows[0]["productId"];
+                res.Username = (string)virtdb.Tables[0].Rows[0]["usrename"];
+                res.Password = (string)virtdb.Tables[0].Rows[0]["password"];
+                res.Name = (string)virtdb.Tables[0].Rows[0]["name"];
+                res.Email = (string)virtdb.Tables[0].Rows[0]["email"];
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                ex.ToString();
-                Console.WriteLine("ERROR showing the user");
+                e.ToString();
+                Console.WriteLine("ERROR showing the product");
             }
             finally
             {
                 c.Close();
             }
-            return virtdb;
+
+            return res;
         }
+
+        //public DataSet searchUsers(String email, String password)
+        //{
+        //    string s;
+        //    s = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+        //    SqlConnection c = new SqlConnection(s);
+        //    DataSet virtdb = new DataSet();
+
+        //    try
+        //    {
+        //        SqlDataAdapter da = new SqlDataAdapter("Select count(*) from User where email = '" + email + "' and password = '" + password + "'", c);
+        //        da.Fill(virtdb, "user");
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ex.ToString();
+        //        Console.WriteLine("ERROR showing the user");
+        //    }
+        //    finally
+        //    {
+        //        c.Close();
+        //    }
+        //    return virtdb;
+        //}
     }
 }

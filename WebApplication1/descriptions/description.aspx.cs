@@ -20,7 +20,7 @@ namespace WebApplication1.descriptions
             //Insert User
             UserEN  userEN = new UserEN("123", "user007", "user007", "user007@sunbest.com.us");
             UserCAD cad = new UserCAD();
-            cad.register_user(userEN);
+            //cad.register_user(userEN);
 
             //Read Product
             ProductEN productEN = null;

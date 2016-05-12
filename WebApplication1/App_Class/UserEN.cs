@@ -15,6 +15,10 @@ namespace Sunglasses_website
 {
     public class UserEN
     {
+        public UserEN()
+        {
+
+        }
         //Class constructor
         public UserEN( string password, string username, string name, string email)
         {

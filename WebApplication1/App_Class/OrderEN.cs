@@ -25,17 +25,8 @@ namespace Sunglasses_website
             this.address = address;
             this.postalCode = postalCode;
             this.quantity = quality; 
-        }
-
-        //Method used in order to search an order in the DB
-        public DataSet order_Transaction(int transactionId)
-        {
-            OrderCAD c = new OrderCAD();
-            DataSet datSet = c.searchOrder(orderId);
-
-            return datSet;
-        }
-        
+        }   
+             
         //Variables declaration
         private int orderId;
         private ProductEN product;

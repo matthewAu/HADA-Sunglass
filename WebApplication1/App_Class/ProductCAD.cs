@@ -13,7 +13,7 @@ namespace Sunglasses_website
 {
     class ProductCAD
     {
-        public DataSet create(ProductEN producto_nuevo)
+        public void create(ProductEN producto_nuevo)
         {
             String str;
             str = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
@@ -67,7 +67,6 @@ namespace Sunglasses_website
                 c.Close();
             }
 
-            return virtdb;
         }
 
         public DataSet update(ProductEN producto_actualizado, int i)
@@ -167,7 +166,7 @@ namespace Sunglasses_website
 
         public ProductEN searchProductById(int productID)
         {
-            ProductEN res = null;
+            ProductEN res = new ProductEN() ;
             //String where it's stored the instructions for the connecton for the DB
             string str = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             DataSet virtdb = new DataSet(); // Created the DataSet that is going to be returned with the information asked
@@ -176,7 +175,7 @@ namespace Sunglasses_website
             try
             {    //The select in SQL language that is processed in the DB which will return all the rows from the table "Admin"
                 //SqlDataAdapter da = new SqlDataAdapter("select * from Product where productName = '" + name + "'", c);
-                SqlDataAdapter da = new SqlDataAdapter("select * from Product where ProductId = '" + productID + "'", c);
+                SqlDataAdapter da = new SqlDataAdapter("select * from [dbo].[Product] where ProductId = '" + productID + "'", c);
                 da.Fill(virtdb, "searchProductById"); //It introduces the information returned from the select into this virtual DB
 
                 res.ProductId = (int)virtdb.Tables[0].Rows[0]["productId"];
@@ -203,31 +202,6 @@ namespace Sunglasses_website
             }
 
             return res;
-        }
-
-        public DataSet searchProductByName(string name)
-        {
-            //String where it's stored the instructions for the connecton for the DB
-            string str = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
-            DataSet virtdb = new DataSet(); // Created the DataSet that is going to be returned with the information asked
-            SqlConnection c = new SqlConnection(str);
-
-            try
-            {    //The select in SQL language that is processed in the DB which will return all the rows from the table "Admin"
-                SqlDataAdapter da = new SqlDataAdapter("select * from Product where productName = '" + name + "'", c);
-                da.Fill(virtdb, "SearchProductByName"); //It introduces the information returned from the select into this virtual DB
-
-            }
-            catch (Exception e)
-            {
-                e.ToString();
-                Console.WriteLine("ERROR showing the product");
-            }
-            finally
-            {
-                c.Close();
-            }
-            return virtdb;
         }
 
     }

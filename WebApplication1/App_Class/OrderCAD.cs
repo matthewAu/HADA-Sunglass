@@ -14,7 +14,7 @@ namespace Sunglasses_website
     class OrderCAD
     {
 
-        public void addOrder(OrderEN nuevo_pedido)
+        public void CreateOrder(OrderEN nuevo_pedido)
         {
             string str = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             DataSet virtdb = new DataSet();
@@ -22,7 +22,7 @@ namespace Sunglasses_website
 
             try
             {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO [dbo].[User] (productId, userId, address, postalCode,transactionDate,quatity) output INSERTED.ORDERID VALUES(@productId,@orderId, @address, @postalCode,@transactionDate,@quatity)", c))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO [dbo].[Order] (productId, userId, address, postalCode,transactionDate,quatity) output INSERTED.ORDERID VALUES(@productId,@orderId, @address, @postalCode,@transactionDate,@quatity)", c))
                 {
 
                     cmd.Parameters.AddWithValue("@productId", nuevo_pedido.Product.ProductId);
@@ -143,8 +143,9 @@ namespace Sunglasses_website
 
         }
 
-        public DataSet searchOrder(int orderId)
+        public OrderEN searchOrder(int orderId)
         {
+            OrderEN res = new OrderEN();
             //String where it's stored the instructions for the connecton for the DB
             string str = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             DataSet virtdb = new DataSet(); // Created the DataSet that is going to be returned with the information asked
@@ -152,8 +153,25 @@ namespace Sunglasses_website
 
             try
             {    //The select in SQL language that is processed in the DB which will return all the rows from the table "Admin"
-                SqlDataAdapter da = new SqlDataAdapter("select count(*) from Order where Id = '" + orderId + "'", c);
-                da.Fill(virtdb, "admin"); //It introduces the information returned from the select into this virtual DB
+                SqlDataAdapter da = new SqlDataAdapter("select * from [dbo].[Order] where Order = '" + orderId + "'", c);
+                da.Fill(virtdb, "searchOrderById"); //It introduces the information returned from the select into this virtual DB
+
+                res.OrderId = (int)virtdb.Tables[0].Rows[0]["orderId"];
+
+                int productId = (int)virtdb.Tables[0].Rows[0]["productId"];
+                ProductCAD cad = new ProductCAD();
+                ProductEN producten = cad.searchProductById(productId);
+                res.Product = producten;
+
+                int userId = (int)virtdb.Tables[0].Rows[0]["userId"];
+                UserCAD usercad = new UserCAD();
+                UserEN useren = usercad.searchUserById(userId);
+                res.User = useren;
+
+                res.TransactionDate = (DateTime)virtdb.Tables[0].Rows[0]["transactionDate"];
+                res.Address = (string)virtdb.Tables[0].Rows[0]["address"];
+                res.PostalCode = (int)virtdb.Tables[0].Rows[0]["postalCode"];
+                res.Quantity = (int)virtdb.Tables[0].Rows[0]["quantity"];
 
             }
             catch (Exception e)
@@ -165,7 +183,7 @@ namespace Sunglasses_website
             {
                 c.Close();
             }
-            return virtdb;
+            return res;
         }
     }
 }
