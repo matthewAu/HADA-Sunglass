@@ -18,11 +18,13 @@
     
 	<!-- main -->
 		<div class="main">
-              <h1>~Contact SunBest Support~</h1>
+            <h1>~Contact <a href="index.html">SunBest</a> Support~</h1>
 			<div class="main-bdy">
 				<div class="main-body-left">
 					<script src='https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js'></script> 
  
+                    
+<!-- Map script -->
 <script> 
     google.maps.event.addDomListener(window, 'load', init);
     var map;
@@ -96,12 +98,12 @@ link = '';     }
 <div id='Hola'></div>
 				</div>
 				<div class="main-body-right">
-					<form>
+					<form action="contact_correct.html" method="get" role="form" name="submitform" id="submitform"  onsubmit="return valid()">
 						<input type="text" placeholder="Name" required=" ">
 						<input type="email" placeholder="Email" required="  ">
 						<textarea placeholder="Message..." required=" "></textarea>
                         <div class="g-recaptcha" data-sitekey="6LfFax8TAAAAALVnC6Yrieoj9uv5wGePKx55wyaR"></div>
-                        <input type="submit" value="Submit"><a href="mailto:estebanchornet.scdenia@gmail.com"></a>
+                        <input type="submit" value="Submit">
                         
 
 					</form>

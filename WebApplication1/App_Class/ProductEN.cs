@@ -16,7 +16,7 @@ namespace Sunglasses_website
         }
 
         //Copy constructor
-        public ProductEN(int productId,string productRef,string productName, float productPrice,string productBrand, string color, string description,string filePathPicture1, string filePathPicture2, string filePathPicture3, string filePathPicture4, string filePathPicture5)
+        public ProductEN(int productId,string productRef,string productName, float productPrice,string productBrand, string color, string description,string filePathPicture1, string filePathPicture2)
         {
             this.productId = productId;
             this.productRef = productRef;
@@ -27,9 +27,6 @@ namespace Sunglasses_website
             this.description = description;
             this.filePathPicture1 = filePathPicture1;
             this.filePathPicture2 = filePathPicture2;
-            this.filePathPicture3 = filePathPicture3;
-            this.filePathPicture4 = filePathPicture4;
-            this.filePathPicture5 = filePathPicture5;
         }
 
         //Variables declaration
@@ -42,9 +39,6 @@ namespace Sunglasses_website
         private string description;
         private string filePathPicture1;
         private string filePathPicture2;
-        private string filePathPicture3;
-        private string filePathPicture4;
-        private string filePathPicture5;
 
         public string ProductRef
         {
@@ -86,24 +80,6 @@ namespace Sunglasses_website
         {
             get { return filePathPicture2; }
             set { filePathPicture2 = value; }
-        }
-
-        public string FilePathPicture3
-        {
-            get { return filePathPicture3; }
-            set { filePathPicture3 = value; }
-        }
-
-        public string FilePathPicture4
-        {
-            get { return filePathPicture4; }
-            set { filePathPicture4 = value; }
-        }
-
-        public string FilePathPicture5
-        {
-            get { return filePathPicture5; }
-            set { filePathPicture5 = value; }
         }
 
         public string ProductName

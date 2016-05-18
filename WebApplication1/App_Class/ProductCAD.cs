@@ -36,9 +36,6 @@ namespace Sunglasses_website
                 newRow[6] = producto_nuevo.Description;
                 newRow[7] = producto_nuevo.FilePathPicture1;
                 newRow[8] = producto_nuevo.FilePathPicture2;
-                newRow[9] = producto_nuevo.FilePathPicture3;
-                newRow[10] = producto_nuevo.FilePathPicture4;
-                newRow[11] = producto_nuevo.FilePathPicture5;
 
                 dt.Rows.Add(newRow);
                 SqlCommandBuilder cbuilder = new SqlCommandBuilder(da);
@@ -53,9 +50,6 @@ namespace Sunglasses_website
                 //this.description = description;
                 //this.filePathPicture1 = filePathPicture1;
                 //this.filePathPicture2 = filePathPicture2;
-                //this.filePathPicture3 = filePathPicture3;
-                //this.filePathPicture4 = filePathPicture4;
-                //this.filePathPicture5 = filePathPicture5;
             }
             catch (Exception ex)
             {
@@ -88,9 +82,6 @@ namespace Sunglasses_website
                 t.Rows[i]["Color"] = producto_actualizado.Color;
                 t.Rows[i]["FilepathPicture1"] = producto_actualizado.FilePathPicture1;
                 t.Rows[i]["FilepathPicture2"] = producto_actualizado.FilePathPicture2;
-                t.Rows[i]["FilepathPicture3"] = producto_actualizado.FilePathPicture3;
-                t.Rows[i]["FilepathPicture4"] = producto_actualizado.FilePathPicture4;
-                t.Rows[i]["FilepathPicture5"] = producto_actualizado.FilePathPicture5;
                 t.Rows[i]["productName"] = producto_actualizado.ProductName;
                 t.Rows[i]["productBrand"] = producto_actualizado.ProductBrand;
 
@@ -181,15 +172,12 @@ namespace Sunglasses_website
                 res.ProductId = (int)virtdb.Tables[0].Rows[0]["productId"];
                 res.ProductRef = (string)virtdb.Tables[0].Rows[0]["productRef"];
                 res.ProductName = (string)virtdb.Tables[0].Rows[0]["productName"];
-                res.ProductPrice = (float)virtdb.Tables[0].Rows[0]["productPrice"];
+                res.ProductPrice = float.Parse(virtdb.Tables[0].Rows[0]["productPrice"].ToString()) ;
                 res.ProductBrand = (string)virtdb.Tables[0].Rows[0]["productBrand"];
                 res.Color = (string)virtdb.Tables[0].Rows[0]["color"];
                 res.Description = (string)virtdb.Tables[0].Rows[0]["description"];
                 res.FilePathPicture1 = (string)virtdb.Tables[0].Rows[0]["filePathPicture1"];
                 res.FilePathPicture2 = (string)virtdb.Tables[0].Rows[0]["filePathPicture2"];
-                res.FilePathPicture3 = (string)virtdb.Tables[0].Rows[0]["filePathPicture3"];
-                res.FilePathPicture4 = (string)virtdb.Tables[0].Rows[0]["filePathPicture4"];
-                res.FilePathPicture5 = (string)virtdb.Tables[0].Rows[0]["filePathPicture5"];
             }
             catch (Exception e)
             {

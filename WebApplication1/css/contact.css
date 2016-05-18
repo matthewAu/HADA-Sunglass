@@ -32,7 +32,7 @@ a{text-decoration:none;}
 nav.vertical ul li{	display:block;}/* vertical menu */
 nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
-/*end reset*/
+
 body{
 	font-family: 'Oswald', sans-serif;
     background:"/images/web-backround.jpeg";
@@ -48,6 +48,17 @@ body{
     font-size: 3em;
     font-weight: bold
 }
+
+h1 a
+{
+    color: red;
+}
+
+h1 a:hover
+{
+    color: yellow;
+}
+
 .main-bdy{
 	width: 45%;
     margin: 0 auto;
@@ -167,7 +178,7 @@ body{
 .copy-right p a:hover{
 	color:#8E44AD;
 }
-/*-- //main --*/
+
 /*-----start-responsive-design------*/
 @media (max-width:1440px){
 	.main-body-right input[type="submit"] {

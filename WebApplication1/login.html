@@ -1,8 +1,3 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -19,30 +14,48 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <!--Google Fonts-->
 </head>
+    
 <body>
-<!--header start here-->
-<div class="login-form">
-			<h1>Login</h1>
-			<div class="login-top">
-			<form>
-				<div class="login-ic">
-					<i ></i>
-					<input type="text"  value="User name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}"/>
-					<div class="clear"> </div>
-				</div>
-				<div class="login-ic">
-					<i class="icon"></i>
-					<input type="password"  value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"/>
-					<div class="clear"> </div>
-				</div>
-			
-				<div class="log-bwn">
-					<input type="submit"  value="Login" >
-				</div>
-				</form>
-			</div>
-			<p class="copy">© 2016 SunBest sunglasses. All rights reserved</p>
-</div>		
-<!--header start here-->
-</body>
+    <div id="background">
+        
+        <!-- Form -->
+        <div class="login-form">
+            <a href="index.html">
+                <img id="log" src="/images/sun.png">
+            </a>
+            
+            <div class="login-top">
+                
+                <form action="login_correct.html" method="get" role="form" name="submitform" id="submitform" onsubmit="return valid()">
+                    
+                    <div class="login-ic">
+                        <i></i>
+                        <input type="text" placeholder="Username" required>    
+                        <div class="clear"></div>
+                    </div>
+                    
+                    <div class="login-ic">
+                        <i class="icon"></i>
+                        <input type="password"  placeholder="Password" name="password" required/>
+                        <div class="clear"></div>
+                    </div>
+                    
+                    <div class="log-bwn">
+                        <input type="submit" class="btn btn-success btn-lg" value="Register" id="boton"/>
+                    </div>
+                </form>                
+            </div>
+            
+            <!-- Link to register page -->
+            <div id="link_reg">
+                <p>Are you new? Click
+                    <a href="register.html">here</a>
+                </p>
+            </div>
+            
+            <!-- Copyright -->
+            <p class="copy">© 2016 SunBest sunglasses. All rights reserved</p>
+        </div>
+    </div>		
+    </body>
 </html>
