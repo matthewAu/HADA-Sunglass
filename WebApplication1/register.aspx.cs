@@ -22,9 +22,22 @@ namespace WebApplication1
 
         protected void SendInfo(object sender, EventArgs e)
         {
-            Response.Redirect("register_correct.aspx");
+            bool success = false;
+            UserEN en = new UserEN();
+            en.Name = this.NameTextBox.Text;
+            en.Password = this.PasswordTextBox.Text;
+            en.Username = this.UserNameTextBox.Text;
+            en.Email = this.EmailTextBox.Text;
+            UserCAD cad = new UserCAD();
+            success = cad.register_user(en);
 
-            ClientCAD client = new ClientCAD();
+            if (success)
+            {
+                Response.Redirect("register_correct.aspx");
+            }
+            else {
+                //Error 
+            }
         }
     }
 }

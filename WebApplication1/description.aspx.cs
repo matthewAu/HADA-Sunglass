@@ -19,9 +19,9 @@ namespace WebApplication1.descriptions
             // int id = 1;
 
             //Insert User
-            UserEN  userEN = new UserEN("123", "user007", "user007", "user007@sunbest.com.us");
-            UserCAD cad = new UserCAD();
-            //cad.register_user(userEN);
+            // UserEN  userEN = new UserEN("123", "user007", "user007", "user007@sunbest.com.us");
+            // UserCAD cad = new UserCAD();
+            // cad.register_user(userEN);
 
             //Read Product
             ProductEN productEN = null;
@@ -65,7 +65,7 @@ namespace WebApplication1.descriptions
                 slides.DataSource = pictureDataTable;
                 slides.DataBind();
 
-                // Picture file path
+                // Colors
                 DataTable colorsDataTable = new DataTable();
 
                 // add some columns to our datatable

@@ -165,8 +165,31 @@
                         
                         <!-- Row 1 -->
                         <div class="row">
+                            <asp:Repeater ID="products" runat="server">
+                                <HeaderTemplate>
+                                    <div class="row">
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <div class="col-md-4">
+                                
+                                        <!-- Picture 1 -->
+                                        <div class="center">
+                                            <input type="image" class="thumbnail" title="<%# Eval("productName") %>" onmouseout="<%# Eval("filePath1") %>" onmouseover="<%# Eval("filePath2") %>" src="<%# Eval("filePath1") %>" onclick="<%# Eval("onclick") %>" ></input>
+                                        </div>
+                                
+                                        <!-- Description 1 -->
+                                        <div class="center">
+                                            <a class="descr" title="<%# Eval("productName") %>" href="<%# Eval("href") %>" ><%# Eval("productName") %></a>
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    </div>
+                                </FooterTemplate>
+                            </asp:Repeater>
                             
-                            <!-- Column 1 -->
+                            
+                            <%--<!-- Column 1 -->
                             <div class="col-md-4">
                                 
                                 <!-- Picture 1 -->
@@ -441,7 +464,7 @@
                                 <div class="center">
                                     <asp:HyperLink CssClass="descr" Text="VINTAGE PACIFIC ·<br/>WEATHERED BLACK" ToolTip="Vintage Pacific · Weathered Black" runat="server" NavigateUrl="~/descriptions/description18.html" />
                                 </div>
-                            </div>
+                            </div>--%>
                         </div>
                         <!-- End Row 6 -->    
                            

@@ -15,8 +15,9 @@ namespace Sunglasses_website
 {
     class UserCAD
     {
-        public void register_user(UserEN u)
+        public bool register_user(UserEN u)
         {
+            bool ok = false;
             string s = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
             SqlConnection c = new SqlConnection(s);
 
@@ -34,6 +35,8 @@ namespace Sunglasses_website
 
                     if (c.State == System.Data.ConnectionState.Open)
                         c.Close();
+
+                    ok = true;
                 }
             }
             catch (Exception ex)
@@ -45,6 +48,7 @@ namespace Sunglasses_website
             {
                 c.Close();
             }
+            return ok;
         }
 
         public void delete_user(UserEN u)
@@ -166,11 +170,18 @@ namespace Sunglasses_website
                 SqlDataAdapter da = new SqlDataAdapter("select * from [dbo].[User] where Username = '" + name + "' and password = '"+ password +"'", c);
                 da.Fill(virtdb, "searchProductById"); //It introduces the information returned from the select into this virtual DB
 
-                res.UserId = (int)virtdb.Tables[0].Rows[0]["productId"];
-                res.Username = (string)virtdb.Tables[0].Rows[0]["usrename"];
-                res.Password = (string)virtdb.Tables[0].Rows[0]["password"];
-                res.Name = (string)virtdb.Tables[0].Rows[0]["name"];
-                res.Email = (string)virtdb.Tables[0].Rows[0]["email"];
+                if (virtdb.Tables[0].Rows.Count != 0)
+                {
+                    res.UserId = (int)virtdb.Tables[0].Rows[0]["userId"];
+                    res.Username = (string)virtdb.Tables[0].Rows[0]["usrename"];
+                    res.Password = (string)virtdb.Tables[0].Rows[0]["password"];
+                    res.Name = (string)virtdb.Tables[0].Rows[0]["name"];
+                    res.Email = (string)virtdb.Tables[0].Rows[0]["email"];
+                }
+                else {
+                    res = null;
+                }
+
             }
             catch (Exception e)
             {

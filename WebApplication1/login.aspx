@@ -52,7 +52,7 @@
                     </div>
                     
                     <!-- Button -->
-                    <asp:Button ID="Button" runat="server" OnClick="SendInfo" Text="Register" />
+                    <asp:Button ID="Button" runat="server" OnClick="SendInfo" Text="Login" />
 
                     <div id="redirection">
                         <p>Are you new? Click

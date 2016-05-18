@@ -130,6 +130,8 @@ namespace Sunglasses_website
             return virtdb; 
         }
 
+
+
         public DataSet read(ProductEN producto_leido)
         {
             string s;
@@ -154,6 +156,37 @@ namespace Sunglasses_website
             }
             return virtdb;
         }
+
+        public List<ProductEN> searchProducts()
+        {
+            List <ProductEN > list = new List<ProductEN>();
+            string str = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+            DataSet virtdb = new DataSet(); // Created the DataSet that is going to be returned with the information asked
+            SqlConnection c = new SqlConnection(str);
+
+            SqlDataAdapter da = new SqlDataAdapter("select * from [dbo].[Product]", c);
+            da.Fill(virtdb, "usertable");
+            DataTable t = new DataTable();
+            t = virtdb.Tables["usertable"];
+
+            foreach (DataRow r in t.Rows)
+            {            
+                list.Add(new ProductEN(
+                    int.Parse(r["productId"].ToString()),
+                    r["productRef"].ToString(),
+                    r["productName"].ToString(),
+                    float.Parse(r["productPrice"].ToString()),
+                    r["productBrand"].ToString(),
+                    r["color"].ToString(),
+                    r["description"].ToString(),
+                    r["filePathPicture1"].ToString(),
+                    r["filePathPicture2"].ToString(),
+                    null
+                ));
+            }
+
+            return list;
+    }
 
         public ProductEN searchProductById(int productID)
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Sunglasses_website;
 
 namespace WebApplication1
 {
@@ -21,7 +22,22 @@ namespace WebApplication1
 
         protected void SendInfo(object sender, EventArgs e)
         {
-            Response.Redirect("login_correct.html");
+            string login = this.UserNameTextBox.Text;
+            string password = this.PasswordTextBox.Text;
+
+            UserCAD cad = new UserCAD();
+            UserEN en = cad.loginByUserNameAndPassword(login, password);
+
+            if (en != null)
+            {
+                Response.Redirect("login_correct.html");
+            }
+            else {
+                // Wrong
+                this.PasswordTextBox.Text = "";
+                this.UserNameTextBox.Text = "";
+            }
+
         }
     }
 }

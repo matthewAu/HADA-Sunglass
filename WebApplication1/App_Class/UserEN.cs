@@ -20,9 +20,9 @@ namespace Sunglasses_website
 
         }
         //Class constructor
-        public UserEN( string password, string username, string name, string email)
+        public UserEN(int id,  string username, string password, string name, string email)
         {
-            this.userId = 0 ;
+            this.userId = id ;
             this.password = password;
             this.username = username;
             this.name = name;
