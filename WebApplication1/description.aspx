@@ -55,7 +55,7 @@ $('.alert-close1').on('click', function(c){
 		<div class="header">
 			<div class="header-top">
 				<div class="col-sm-8 logo text-center">
-					<a href="../index.html"><img id="logo" src="../images/sun.png"></a>	
+					<a href="./index.aspx"><img id="logo" src="./images/sun.png"></a>	
 				</div>
 				
 					<div class="col-sm-4 header-left">		
@@ -96,7 +96,7 @@ $('.alert-close1').on('click', function(c){
                                 <ul class="slides">
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <li data-thumb="<%# Eval("filePathPicture") %>">">
+                                    <li data-thumb="<%# Eval("filePathPicture") %>">
 									     <div class="thumb-image">
                                              <img src="<%# Eval("filePathPicture") %>" data-imagezoom="true" class="img-responsive">
 									     </div>
@@ -121,42 +121,19 @@ $('.alert-close1').on('click', function(c){
 					</div>
 						<div class="cnt-gd-rt-col">
 							<h6>Colors</h6>
-							<ul>
-								<li  title="Emerald One"><a href="/descriptions/description1.html"></a></li>
-								<li title="Daylight One"><a href="/descriptions/description2.html"></a></li>
-								<li title="Clear Blue One"><a href="/descriptions/description3.html"></a></li>
-								<li title="Dark One"><a href="/descriptions/description4.html"></a></li>
-                                <li title="Sky One"><a href="/descriptions/description5.html"></a></li>
-							</ul>
-                            
-                            <style>
-                                
-                                .cnt-gd-rt-col ul li:nth-child(1) a
-                                {
-                                    background: #00F683
-                                }
-                                
-                                .cnt-gd-rt-col ul li:nth-child(2) a
-                                {
-                                    background: #EFB41A;
-                                }
-
-                                .cnt-gd-rt-col ul li:nth-child(3) a
-                                {
-                                    background: #7BC2EE;
-                                }
-                                
-                                .cnt-gd-rt-col ul li:nth-child(4) a
-                                {
-                                    background: #232323;
-                                }
-                                
-                                .cnt-gd-rt-col ul li:nth-child(5) a
-                                {
-                                    background: #004DEA;
-                                }
-                            
-                            </style>
+                            <asp:Repeater ID="colors" runat="server">
+                                <HeaderTemplate>
+                                <ul class="colors">
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <li title="<%# Eval("relatedProductName") %>">
+                                        <a style="background-color: <%# Eval("relatedColor") %>" href="description.aspx?id=<%# Eval("relatedProductId") %>"></a>
+                                    </li>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    </ul>
+                                </FooterTemplate>
+                            </asp:Repeater>
                             
 							<div class="clearfix"></div>
 						</div>

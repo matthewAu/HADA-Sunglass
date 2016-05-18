@@ -16,7 +16,7 @@ namespace Sunglasses_website
         }
 
         //Copy constructor
-        public ProductEN(int productId,string productRef,string productName, float productPrice,string productBrand, string color, string description,string filePathPicture1, string filePathPicture2)
+        public ProductEN(int productId,string productRef,string productName, float productPrice,string productBrand, string color, string description,string filePathPicture1, string filePathPicture2, List<ProductEN> relations)
         {
             this.productId = productId;
             this.productRef = productRef;
@@ -27,6 +27,7 @@ namespace Sunglasses_website
             this.description = description;
             this.filePathPicture1 = filePathPicture1;
             this.filePathPicture2 = filePathPicture2;
+            this.relations = relations;
         }
 
         //Variables declaration
@@ -39,6 +40,7 @@ namespace Sunglasses_website
         private string description;
         private string filePathPicture1;
         private string filePathPicture2;
+        private List<ProductEN> relations;
 
         public string ProductRef
         {
@@ -92,6 +94,12 @@ namespace Sunglasses_website
         {
             get { return productBrand; }
             set { productBrand = value; }
+        }
+
+        public List<ProductEN> Relations
+        {
+            get { return relations; }
+            set { relations = value; }
         }
 
     }

@@ -172,12 +172,46 @@ namespace Sunglasses_website
                 res.ProductId = (int)virtdb.Tables[0].Rows[0]["productId"];
                 res.ProductRef = (string)virtdb.Tables[0].Rows[0]["productRef"];
                 res.ProductName = (string)virtdb.Tables[0].Rows[0]["productName"];
-                res.ProductPrice = float.Parse(virtdb.Tables[0].Rows[0]["productPrice"].ToString()) ;
+                res.ProductPrice = float.Parse(virtdb.Tables[0].Rows[0]["productPrice"].ToString());
                 res.ProductBrand = (string)virtdb.Tables[0].Rows[0]["productBrand"];
                 res.Color = (string)virtdb.Tables[0].Rows[0]["color"];
                 res.Description = (string)virtdb.Tables[0].Rows[0]["description"];
                 res.FilePathPicture1 = (string)virtdb.Tables[0].Rows[0]["filePathPicture1"];
                 res.FilePathPicture2 = (string)virtdb.Tables[0].Rows[0]["filePathPicture2"];
+
+
+                string query = @"select Product.* from Product where productId in (" +
+                    "select distinct R.rid from" +
+                        "((" +
+                            "select r.related as rid from Product p, ProductRelation r " +
+                            "where p.productId = r.id and r.id != r.related and p.productId = " + productID +
+                        ")UNION(" +
+                            "select r.id as rid from Product p, ProductRelation r " +
+                            "where p.productId = r.related and r.id != r.related and p.productId = " + productID +
+                        ")) R" +
+                  ")";
+
+                SqlDataAdapter da2 = new SqlDataAdapter(query, c);
+                da2.Fill(virtdb, "relations");
+                res.Relations = new List<ProductEN>();
+                DataTable t = new DataTable();
+                t = virtdb.Tables["relations"];
+                foreach (DataRow r in t.Rows)
+                {
+                    res.Relations.Add(new ProductEN(
+                        int.Parse(r["productId"].ToString()),
+                        r["productRef"].ToString(),
+                        r["productName"].ToString(),
+                        float.Parse(r["productPrice"].ToString()),
+                        r["productBrand"].ToString(),
+                        r["color"].ToString(),
+                        r["description"].ToString(),
+                        r["filePathPicture1"].ToString(),
+                        r["filePathPicture2"].ToString(),
+                        null
+                    ));
+                }
+
             }
             catch (Exception e)
             {

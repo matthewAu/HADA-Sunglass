@@ -41,6 +41,7 @@ namespace WebApplication1.descriptions
                 string[] filePathPicture = new string [2];
                 filePathPicture[0] = productEN.FilePathPicture1;
                 filePathPicture[1] = productEN.FilePathPicture2;
+                List<ProductEN> relations = productEN.Relations;
                 
                 this.Title = productName;
                 this.lbl_ProductName.Text = productName;
@@ -64,13 +65,32 @@ namespace WebApplication1.descriptions
                 slides.DataSource = pictureDataTable;
                 slides.DataBind();
 
+                // Picture file path
+                DataTable colorsDataTable = new DataTable();
+
+                // add some columns to our datatable
+                colorsDataTable.Columns.Add("relatedProductName");
+                colorsDataTable.Columns.Add("relatedProductId");
+                colorsDataTable.Columns.Add("relatedColor");
+
+                // firstRelations = self
+                DataRow dataRow = colorsDataTable.NewRow();
+                dataRow["relatedProductName"] = productEN.ProductName.ToString();
+                dataRow["relatedProductId"] = productEN.ProductId.ToString();
+                dataRow["relatedColor"] = productEN.Color.ToString();
+                colorsDataTable.Rows.Add(dataRow);
+                // other related products
+                foreach (ProductEN r in relations)
+                {
+                    DataRow row = colorsDataTable.NewRow();
+                    row["relatedProductName"] = r.ProductName.ToString();
+                    row["relatedProductId"] = r.ProductId.ToString();
+                    row["relatedColor"] = r.Color.ToString();
+                    colorsDataTable.Rows.Add(row);
+                }
+                colors.DataSource = colorsDataTable;
+                colors.DataBind();
             }
-
-
-
-
-
-
 
         }
     }
