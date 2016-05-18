@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="register_correct.aspx.cs" Inherits="WebApplication1.register_correct" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login_correct.aspx.cs" Inherits="WebApplication1.login_correct" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <link href="https://fonts.googleapis.com/css?family=Bevan:light,lightitalic,normal,italic,bold,bolditalic" rel="stylesheet" type="text/css"/>
-    <title>SunBest · Register Successful</title>
+    <title>SunBest · Login Successful</title>
 </head>
 <body>
     
@@ -122,10 +122,10 @@
             
             <div>
                 <h1>
-                    Register Succesful!
+                    Login Succesful!
                 </h1>
                 
-                <p>You have been registered.</p>
+                <p>You have been logged.</p>
                 
                 <div id="contenedor"></div>
                 
@@ -139,3 +139,4 @@
     </form>
 </body>
 </html>
+

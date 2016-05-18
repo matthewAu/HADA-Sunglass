@@ -69,6 +69,23 @@
                 else
                     args.IsValid = false;
             }
+            
+            /* Function to validate the phone number */
+            function validar(){
+                var numeroTelefono=document.getElementById('id_delInputText');
+                var expresionRegular1=/^([0-9]+){9}$/;  // With this we validate the number
+                var expresionRegular2=/\s/;     // With this we validate that it has no blank spaces
+                
+                if(numeroTelefono.value=='')
+                    alert('This field is required!');
+                
+                else if(expresionRegular2.test(numeroTelefono.value))
+                    alert('ERROR: There are blank spaces.');
+                
+                else if(!expresionRegular1.test(numeroTelefono.value))
+                    alert('ERROR: The phone number entered is not correct. Try again.');
+    }
+
 
         </script>
 
@@ -115,7 +132,7 @@
                     <asp:Label ID="EmailLabel" CssClass="labels" runat="server" Text="Email" AssociatedControlID="EmailTextBox"></asp:Label>
 
                     <!-- Email textbox -->
-                    <asp:TextBox ID="EmailTextBox" CssClass="formStyle" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="EmailTextBox" Placeholder="example@example.com" CssClass="formStyle" runat="server"></asp:TextBox>
 
                     <!-- Email required field -->
                     <asp:RequiredFieldValidator CssClass="required" runat="server" ControlToValidate="EmailTextBox"
@@ -129,7 +146,7 @@
                     <asp:Label ID="PhoneLabel" CssClass="labels" runat="server" Text="Phone" AssociatedControlID="PhoneTextBox"></asp:Label>
 
                     <!-- Phone textbox -->
-                    <asp:TextBox ID="PhoneTextBox" CssClass="formStyle" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="PhoneTextBox" Placeholder="691565440" CssClass="formStyle" runat="server"></asp:TextBox>
 
                     <!-- Phone required field -->
                     <asp:RequiredFieldValidator CssClass="required" runat="server" ControlToValidate="PhoneTextBox"
@@ -141,7 +158,7 @@
                     <asp:Label ID="DNILabel" CssClass="labels" runat="server" Text="DNI" AssociatedControlID="DNITextBox"></asp:Label>
 
                     <!-- DNI textbox -->
-                    <asp:TextBox ID="DNITextBox" CssClass="formStyle" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="DNITextBox" Placeholder="46529532A" CssClass="formStyle" runat="server"></asp:TextBox>
 
                     <!-- DNI required field -->
                     <asp:RequiredFieldValidator CssClass="required" runat="server" ControlToValidate="DNITextBox"
@@ -149,7 +166,7 @@
 
                     <!-- DNI validation -->
                     <asp:CustomValidator ID="CustomValidatorNIF" CssClass="required" runat="server" ErrorMessage="The DNI entered is not correct!"
-                        ControlToValidate="DNITextBox" ClientValidationFunction="validanif"></asp:CustomValidator>
+                        ControlToValidate="DNITextBox" Display="None" ClientValidationFunction="validanif"></asp:CustomValidator>
 
                     <!-- Username label -->
                     <asp:Label ID="UsernameLabel" CssClass="labels" runat="server" Text="Username" AssociatedControlID="UserNameTextBox"></asp:Label>

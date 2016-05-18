@@ -59,7 +59,11 @@ $('.alert-close1').on('click', function(c){
 				</div>
 				
 					<div class="col-sm-4 header-left">		
-						<p class="log"><a href="#">Signup</a><span>or</span><a  href="#">Login</a></p>
+                        <p class="log">
+                            <a href="login.aspx">Login</a>
+                            <span>or</span>
+                            <a href="contact.aspx">Contact</a>
+						</p>
 							<div class="cart box_1">
 								<a href="#">
 								<h3> <span class="simpleCart_total">0.00 €</span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> items)<img src="../images/cart.png" alt=""></h3>

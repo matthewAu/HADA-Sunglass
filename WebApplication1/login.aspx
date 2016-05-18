@@ -10,6 +10,36 @@
     </head>
     
     <body>
+
+        <style>
+            
+            p
+            {
+                color: #000;
+                font-family: sans-serif;
+                font-weight: bold;
+                text-align: center;
+            }
+
+            #link
+            {
+                text-decoration: none;
+                font-weight: bold;
+                color: orangered;
+            }
+
+            #link:hover
+            {
+                color: blue;
+            }
+
+            #copy
+            {
+                color: #fff;
+            }
+
+        </style>
+
         <form id="form1" runat="server">
             
             <div id="header">
@@ -56,13 +86,13 @@
 
                     <div id="redirection">
                         <p>Are you new? Click
-                            <asp:HyperLink Text="here" runat="server" NavigateUrl="~/register.aspx" />
+                            <asp:HyperLink ID="link" Text="here" runat="server" NavigateUrl="~/register.aspx" />
                         </p>
                     </div>
                 </div>
             </div>
             
-            <p class="copy">2016 SunBest sunglasses. All rights reserved.</p>
+            <p id="copy">&copy;2016 SunBest sunglasses. All rights reserved.</p>
         </form>
     </body>
 </html>

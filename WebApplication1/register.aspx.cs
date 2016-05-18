@@ -36,7 +36,7 @@ namespace WebApplication1
                 Response.Redirect("register_correct.aspx");
             }
             else {
-                //Error 
+                //Error
             }
         }
     }

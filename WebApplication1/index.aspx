@@ -7,9 +7,8 @@
         <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css"/>
         <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'/>
         <link href="/css/index.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="/css/fonts.css" type="text/css"/>
+        <link rel="stylesheet" href="css/fonts.css" type="text/css"/>
         <script src="http://code.jquery.com/jquery-latest.js"></script>
-        <!-- <script src="//code.jquery.com/jquery-1.11.3.min.js"></script> -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1"/>
@@ -78,7 +77,7 @@
 
                 </style>
                 
-                <span class="going-up icon-arrow-up2"></span>
+                <span class="going-up icon-chevron-up"></span>
 
                 <!-- Header part -->
                 <div class="header">
