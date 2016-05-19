@@ -30,7 +30,7 @@ namespace WebApplication1
 
             if (en != null)
             {
-                Response.Redirect("login_correct.html");
+                Response.Redirect("login_correct.aspx");
             }
             else {
                 // Wrong

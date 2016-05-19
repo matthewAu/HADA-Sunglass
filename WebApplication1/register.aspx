@@ -10,7 +10,7 @@
     
     <body>
 
-        <script>
+<!--        <script>
 
             // Calculates the DNI letter from a number.
             function letranif(numero) {
@@ -87,7 +87,7 @@
     }
 
 
-        </script>
+        </script> -->
 
     <form id="form1" runat="server">
       
@@ -165,8 +165,8 @@
                         ErrorMessage="The DNI number is required!" Display="None"></asp:RequiredFieldValidator>
 
                     <!-- DNI validation -->
-                    <asp:CustomValidator ID="CustomValidatorNIF" CssClass="required" runat="server" ErrorMessage="The DNI entered is not correct!"
-                        ControlToValidate="DNITextBox" Display="None" ClientValidationFunction="validanif"></asp:CustomValidator>
+             <!--       <asp:CustomValidator ID="CustomValidatorNIF" CssClass="required" runat="server" ErrorMessage="The DNI entered is not correct!"
+                        ControlToValidate="DNITextBox" Display="None" ClientValidationFunction="validanif"></asp:CustomValidator> -->
 
                     <!-- Username label -->
                     <asp:Label ID="UsernameLabel" CssClass="labels" runat="server" Text="Username" AssociatedControlID="UserNameTextBox"></asp:Label>

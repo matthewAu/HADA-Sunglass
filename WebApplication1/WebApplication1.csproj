@@ -153,6 +153,10 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="App_Data\sunglassDB.ldf">
+      <DependentUpon>sunglassDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\sunglassDB.mdf" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -245,6 +249,7 @@
     <Content Include="js\responsiveslides.min.js" />
     <Content Include="js\simpleCart.min.js" />
     <Content Include="login.aspx" />
+    <Content Include="login_correct.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -398,6 +403,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login_correct.aspx.cs">
+      <DependentUpon>login_correct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login_correct.aspx.designer.cs">
+      <DependentUpon>login_correct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

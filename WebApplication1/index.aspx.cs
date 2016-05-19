@@ -35,7 +35,8 @@ namespace WebApplication1
                 row["filePath1"] = p.FilePathPicture1.ToString();
                 row["filePath2"] = p.FilePathPicture2.ToString();
                 row["href"] = "./description.aspx?id=" + p.ProductId.ToString();
-                row["onclick"] = "location.assign('./description.aspx?id=" + p.ProductId.ToString() + "')";
+                //row["onclick"] = "location.assign('./description.aspx?id=" + p.ProductId.ToString() + "')";
+                row["onclick"] = "window.location.assign('description.aspx?id=" + p.ProductId.ToString() + "');";
                 row["productId"] = p.ProductId.ToString();
                 productsDataTable.Rows.Add(row);
             }
